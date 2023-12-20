@@ -5,6 +5,7 @@ import mediapipe as mp
 import time
 import utils, math
 import numpy as np
+import os
 #import pygame 
 #from pygame import mixer 
 
@@ -246,7 +247,9 @@ with map_face_mesh.FaceMesh(min_detection_confidence =0.5, min_tracking_confiden
                     CEF_COUNTER = 0
                 else:
                     if current_time - last_action_time >= 5:
-                       out = cv2.imwrite(f'capture_{time.time()}.jpg', shots_frame)
+                       output_filename = f'capture_{time.time()}.jpg'
+                       output_path = os.path.join('img', output_filename)
+                       out = cv2.imwrite(output_path, shots_frame)
                        last_action_time = current_time
             cv2.putText(frame, f'Total Blinks: {TOTAL_BLINKS}', (100, 150), FONTS, 0.7, utils.GREEN, 2)
             #utils.colorBackgroundText(frame,  f'Total Blinks: {TOTAL_BLINKS}', FONTS, 0.7, (30,150),2)
