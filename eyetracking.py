@@ -1,5 +1,3 @@
-# camera github : https://gist.github.com/cbednarski/8450931
-
 import cv2
 import mediapipe as mp
 import time
